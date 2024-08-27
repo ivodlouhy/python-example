@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Page</title>
+</head>
+<body>
+    <p>
+        <span id="notice"></span>
+    </p>
+    <p>
+        <button id="button" style="display: none;" onclick="location.reload()">Button</button>
+    </p>
+    <script>
+        window.onload = function() {
+            let random = Math.random()
+            document.getElementById('notice').innerText = random < 0.5? 'The button will appear in 3 seconds': 'The button will not appear';
+            if (random < 0.5) {
+                setTimeout(() => document.getElementById('button').style.display = 'block', 3000)
+            }
+        };
+    </script>
+</body>
+</html>

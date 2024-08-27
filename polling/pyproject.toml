@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "python-example"
+authors = ["Ivo Dlouhy <ivo.dlouhy@vertice.one>"]
+description = "python-example/polling"
+version = "1.0.0"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+polling = "^0.3.2"
+playwright = "^1.46.0"
+pytest = "^8.3.2"
+pytest-playwright = "^0.5.1"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
