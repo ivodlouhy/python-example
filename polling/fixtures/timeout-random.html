@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>python-example</title>
+</head>
+<body>
+    <p>
+        <span id="notice"></span>
+    </p>
+    <p>
+        <button id="button" style="display: none;" onclick="location.reload()">Button</button>
+    </p>
+    <script>
+        window.onload = function() {
+            let random = Math.random()
+            let delay = random * 7
+            document.getElementById('notice').innerText = `The button will appear in ${delay} seconds`
+            setTimeout(() => document.getElementById('button').style.display = 'block', delay*1000)
+        }
+    </script>
+</body>
+</html>

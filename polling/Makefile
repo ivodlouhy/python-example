@@ -1,5 +1,6 @@
 init:
 	poetry install
+	playwright install
 
-run:
-	poetry run python main.py
+test:
+	poetry run pytest
