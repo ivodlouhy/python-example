@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "python-example"
+authors = ["Ivo Dlouhy <ivo.dlouhy@vertice.one>"]
+description = "python-example/pydantic"
+version = "1.0.0"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+pydantic = "^2.8.2"
+pytest = "^8.3.2"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
