@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "python-example"
 authors = ["Ivo Dlouhy <ivo.dlouhy@vertice.one>"]
-description = "Example"
+description = "python-example/polling"
 version = "1.0.0"
 
 [tool.poetry.dependencies]
