@@ -1,5 +1,5 @@
 init:
-	poetry install
+	poetry install --no-root
 	playwright install
 
 test:
