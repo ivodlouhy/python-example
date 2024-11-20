@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "python-example"
+authors = ["Ivo Dlouhy <ivo.dlouhy@vertice.one>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+pytest-playwright = "^0.5.2"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
