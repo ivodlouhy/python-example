@@ -1,0 +1,4 @@
+.idea
+.venv
+.aws-sam
+src/lambda/example/requirements.txt

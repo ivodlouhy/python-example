@@ -1,0 +1,45 @@
+openapi: '3.0.2'
+info:
+  title: Example API
+  version: '0.1.0'
+  description: >
+    Example API
+
+paths:
+  /example:
+    get:
+      operationId: Example
+      summary: ""
+      description: ""
+      responses:
+        200:
+          description: ""
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                description: ""
+                additionalProperties: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      x-amazon-apigateway-integration:
+        type: "aws_proxy"
+        httpMethod: POST
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ExampleLambdaFunction.Arn}/invocations"
+        credentials:
+          Fn::Sub: '${ExampleApiRole.Arn}'
