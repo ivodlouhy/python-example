@@ -14,7 +14,6 @@ def lambda_handler(event, context: LambdaContext):
     return {
         'statusCode': 200,
         'body': json.dumps({
-            'hello': 'world',
             'message': os.getenv('EXAMPLE_PARAMETER'),
             'event': event
         })
