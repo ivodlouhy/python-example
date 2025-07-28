@@ -23,16 +23,20 @@ runs:
   using: 'composite'
   steps:
     - name: Check PR Title Format
-      shell: python
-      env:
-        PR_TITLE: ${{ github.event.pull_request.title }}
-        TITLE_PATTERN: ${{ inputs.title-pattern }}
-        EXPECTED_FORMAT: ${{ inputs.expected-format }}
-        ERROR_MESSAGE: ${{ inputs.error-message }}
-        SUCCESS_MESSAGE: ${{ inputs.success-message }}
-      run: |
-        import sys
-        import os
-        sys.path.append(os.path.dirname(__file__))
-        from check_title import main
-        main() 
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const title = context.payload.pull_request.title;
+          const pattern = new RegExp('${{ inputs.title-pattern }}');
+          
+          if (!pattern.test(title)) {
+            const errorMsg = `❌ ${{ inputs.error-message }}.
+            
+            Expected format: ${{ inputs.expected-format }}
+            Current title: ${title}
+            
+            Please update the title to follow the required pattern.`;
+            core.setFailed(errorMsg);
+          } else {
+            console.log('✅ ${{ inputs.success-message }}');
+          } 
