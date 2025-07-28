@@ -1,0 +1,17 @@
+name: Pull Request Title Check (Action)
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR Title Format
+        uses: ./.github/actions/pr-title-check
+        with:
+          title-pattern: '^FIX JIRA-\\d+: .+$'
+          expected-format: 'FIX JIRA-123: Subject'
+          error-message: 'Pull request title does not match required format'
+          success-message: 'Pull request title format is correct!' 
