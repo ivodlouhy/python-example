@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check PR Title Format
-        uses: ivodlouhy/python-examples/.github/actions/pr-title-check
+        uses: ivodlouhy/python-examples/.github/actions/pr-title-check@main
         with:
           title-pattern: '^FIX JIRA-\\d+: .+$'
           expected-format: 'FIX JIRA-123: Subject'
