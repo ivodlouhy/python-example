@@ -1,0 +1,42 @@
+name: 'Pull Request Title Check'
+description: 'Validates pull request titles against a configurable regex pattern'
+
+inputs:
+  title-pattern:
+    description: 'Regex pattern to validate PR title format'
+    required: true
+    default: '^FIX JIRA-\\d+: .+$'
+  expected-format:
+    description: 'Description of the expected format for error messages'
+    required: true
+    default: 'FIX JIRA-123: Subject'
+  error-message:
+    description: 'Custom error message to display when validation fails'
+    required: false
+    default: 'Pull request title does not match required format'
+  success-message:
+    description: 'Custom success message to display when validation passes'
+    required: false
+    default: 'Pull request title format is correct!'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check PR Title Format
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const title = context.payload.pull_request.title;
+          const pattern = new RegExp('${{ inputs.title-pattern }}');
+          
+          if (!pattern.test(title)) {
+            const errorMsg = `❌ ${{ inputs.error-message }}.
+            
+            Expected format: ${{ inputs.expected-format }}
+            Current title: ${title}
+            
+            Please update the title to follow the required pattern.`;
+            core.setFailed(errorMsg);
+          } else {
+            console.log('✅ ${{ inputs.success-message }}');
+          } 
